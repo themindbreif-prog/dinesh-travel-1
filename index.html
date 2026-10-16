@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lanka Vibe Travels | Private Chauffeur & Custom Tours Sri Lanka</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- AOS (Animate On Scroll) CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#0D9488',   // Emerald Teal
+                        primaryDark: '#0F766E',
+                        accent: '#F59E0B',    // Amber Gold
+                        darkBg: '#0F172A',    // Dark Slate
+                    },
+                    animation: {
+                        'pulse-glow': 'pulseGlow 2.5s infinite ease-in-out',
+                        'float': 'float 4s ease-in-out infinite',
+                        'gradient-x': 'gradientX 12s ease infinite',
+                    },
+                    keyframes: {
+                        pulseGlow: {
+                            '0%, 100%': { boxShadow: '0 0 15px rgba(245, 158, 11, 0.4)' },
+                            '50%': { boxShadow: '0 0 30px rgba(245, 158, 11, 0.8), 0 0 10px rgba(13, 148, 136, 0.5)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        },
+                        gradientX: {
+                            '0%, 100%': { 'background-size': '200% 200%', 'background-position': 'left center' },
+                            '50%': { 'background-size': '200% 200%', 'background-position': 'right center' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(14px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+        .dark-glass {
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(14px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .hero-bg {
+            background-image: linear-gradient(to bottom, rgba(15, 23, 42, 0.72), rgba(15, 23, 42, 0.88)), url('https://images.unsplash.com/photo-1586861635167-e5223aadc9fe?q=80&w=1920&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        .badge-glow {
+            animation: pulseGlow 2.5s infinite ease-in-out;
+        }
+        /* Custom Hover Shimmer on Action Buttons */
+        .shimmer-btn {
+            position: relative;
+            overflow: hidden;
+        }
+        .shimmer-btn::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(60deg, transparent, rgba(255,255,255,0.3), transparent);
+            transform: rotate(30deg) translateX(-100%);
+            transition: transform 0.8s ease;
+        }
+        .shimmer-btn:hover::after {
+            transform: rotate(30deg) translateX(100%);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased selection:bg-primary selection:text-white overflow-x-hidden">
+
+    <header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 glass-card border-b border-slate-200/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="w-11 h-11 rounded-xl bg-gradient-to-tr from-primary to-emerald-400 flex items-center justify-center text-white text-xl font-bold shadow-lg shadow-primary/30 group-hover:scale-105 transition-transform">
+                    <i class="fa-solid fa-car-side"></i>
+                </div>
+                <div>
+                    <span class="text-xl font-extrabold text-slate-900 tracking-tight block">Lanka Vibe</span>
+                    <span class="text-[10px] font-extrabold text-primary block -mt-1 tracking-widest uppercase">Private Tours & Chauffeur</span>
+                </div>
+            </a>
+
+            <!-- Desktop Navigation -->
+            <nav class="hidden md:flex items-center gap-8 font-semibold text-sm">
+                <a href="#about" class="text-slate-700 hover:text-primary transition-colors">About Me</a>
+                <a href="#destinations" class="text-slate-700 hover:text-primary transition-colors">Destinations</a>
+                <a href="#tours" class="text-slate-700 hover:text-primary transition-colors">Tour Options</a>
+                <a href="#hotels" class="text-slate-700 hover:text-primary transition-colors">Hotel Support</a>
+                <a href="#calculator" class="text-slate-700 hover:text-primary transition-colors">Price Estimator</a>
+                <a href="#contact" class="bg-primary hover:bg-primaryDark text-white px-5 py-2.5 rounded-full shadow-md shadow-primary/20 transition-all hover:scale-105">Book Tour</a>
+            </nav>
+
+            <!-- Mobile Hamburger Button -->
+            <button id="mobile-menu-btn" aria-label="Toggle Navigation Menu" class="md:hidden text-slate-800 text-2xl focus:outline-none p-2">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Dropdown Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-slate-200 px-6 py-4 flex flex-col gap-4 text-base font-semibold shadow-2xl">
+            <a href="#about" class="text-slate-700 hover:text-primary py-1">About Me</a>
+            <a href="#destinations" class="text-slate-700 hover:text-primary py-1">Destinations</a>
+            <a href="#tours" class="text-slate-700 hover:text-primary py-1">Tour Options</a>
+            <a href="#hotels" class="text-slate-700 hover:text-primary py-1">Hotel Support</a>
+            <a href="#calculator" class="text-slate-700 hover:text-primary py-1">Price Estimator</a>
+            <a href="#contact" class="bg-primary text-white text-center py-3 rounded-xl shadow-md">Book Your Tour</a>
+        </div>
+    </header>
+
+    <section class="relative min-h-screen hero-bg flex items-center justify-center pt-28 pb-16 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-4xl text-center text-white space-y-6">
+            <div data-aos="fade-down" data-aos-duration="1000" class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-xs sm:text-sm font-semibold tracking-wide text-amber-300 uppercase badge-glow">
+                <i class="fa-solid fa-star text-amber-400"></i> Top-Rated Private Driver & Tour Guide
+            </div>
+            
+            <h1 data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="200" class="text-4xl sm:text-6xl font-extrabold tracking-tight leading-tight">
+                Explore Sri Lanka Your Way <br class="hidden sm:inline"/>With Comfort & Peace of Mind
+            </h1>
+            
+            <p data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400" class="text-base sm:text-xl text-slate-200 max-w-2xl mx-auto font-normal leading-relaxed">
+                Tailor-made private tours across Sri Lanka in a clean, fully air-conditioned car. Flexible short itineraries or complete island round trips — customized just for you!
+            </p>
+
+            <div data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600" class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+                <a href="#calculator" class="shimmer-btn w-full sm:w-auto bg-accent hover:bg-amber-600 text-slate-950 font-bold px-8 py-4 rounded-xl shadow-lg shadow-amber-500/30 transition-all hover:scale-105 active:scale-95 flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-calculator"></i> Calculate Tour Price
+                </a>
+                <a href="https://wa.me/94770000000?text=Hi!%20I%20am%20interested%20in%20a%20private%20tour%20in%20Sri%20Lanka." target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto bg-white/15 hover:bg-white/25 backdrop-blur-md text-white border border-white/30 font-semibold px-8 py-4 rounded-xl transition-all hover:scale-105 active:scale-95 flex items-center justify-center gap-2">
+                    <i class="fa-brands fa-whatsapp text-emerald-400 text-xl"></i> Chat on WhatsApp
+                </a>
+            </div>
+
+            <!-- Key Service Badges -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 pt-10 text-left">
+                <div data-aos="fade-up" data-aos-delay="700" class="glass-card p-4 rounded-2xl text-slate-900 shadow-lg hover:-translate-y-2 transition-transform duration-300">
+                    <i class="fa-solid fa-car text-primary text-2xl mb-1"></i>
+                    <h3 class="font-bold text-sm">A/C Private Car</h3>
+                    <p class="text-xs text-slate-600">Clean, safe & spacious</p>
+                </div>
+                <div data-aos="fade-up" data-aos-delay="800" class="glass-card p-4 rounded-2xl text-slate-900 shadow-lg hover:-translate-y-2 transition-transform duration-300">
+                    <i class="fa-solid fa-hotel text-primary text-2xl mb-1"></i>
+                    <h3 class="font-bold text-sm">Hotel Bookings</h3>
+                    <p class="text-xs text-slate-600">On-demand support</p>
+                </div>
+                <div data-aos="fade-up" data-aos-delay="900" class="glass-card p-4 rounded-2xl text-slate-900 shadow-lg hover:-translate-y-2 transition-transform duration-300">
+                    <i class="fa-solid fa-route text-primary text-2xl mb-1"></i>
+                    <h3 class="font-bold text-sm">Custom Routes</h3>
+                    <p class="text-xs text-slate-600">Short or multi-day</p>
+                </div>
+                <div data-aos="fade-up" data-aos-delay="1000" class="glass-card p-4 rounded-2xl text-slate-900 shadow-lg hover:-translate-y-2 transition-transform duration-300">
+                    <i class="fa-solid fa-plane-arrival text-primary text-2xl mb-1"></i>
+                    <h3 class="font-bold text-sm">Airport Transfer</h3>
+                    <p class="text-xs text-slate-600">24/7 CMB Airport pickup</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+            <div class="relative" data-aos="fade-right" data-aos-duration="1000">
+                <div class="absolute -inset-4 bg-gradient-to-r from-primary to-amber-400 rounded-3xl blur-xl opacity-30 animate-pulse"></div>
+                <img src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?q=80&w=1000&auto=format&fit=crop" alt="Sri Lanka Private Driver and Car" class="relative rounded-3xl shadow-2xl object-cover w-full h-[460px] hover:scale-[1.01] transition-transform duration-500">
+                
+                <div class="absolute -bottom-6 -right-2 sm:-right-6 glass-card p-5 rounded-2xl shadow-xl max-w-xs border border-white animate-float">
+                    <div class="flex items-center gap-3">
+                        <div class="w-12 h-12 rounded-full bg-teal-100 flex items-center justify-center text-primary text-2xl font-bold">
+                            <i class="fa-solid fa-shield-halved"></i>
+                        </div>
+                        <div>
+                            <p class="text-sm font-bold text-slate-900">100% Reliable & Safe</p>
+                            <p class="text-xs text-slate-500">Government Licensed Driver</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="space-y-6" data-aos="fade-left" data-aos-duration="1000">
+                <span class="text-primary font-extrabold tracking-wider text-xs uppercase px-3 py-1 bg-teal-50 rounded-full border border-teal-200">Ayubowan! I am Your Local Guide</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 leading-tight">
+                    Friendly Private Driver & Experienced Tour Guide Across Sri Lanka
+                </h2>
+                <p class="text-slate-600 leading-relaxed">
+                    Welcome to paradise! I offer personalized, flexible private chauffeur tour services for couples, families, and solo travelers. From the moment you land at Colombo International Airport (CMB), I take care of all road travel, luggage, tolls, fuel, and local insights.
+                </p>
+                <p class="text-slate-600 leading-relaxed">
+                    Whether you want a quick 3-day golden triangle escape, a 7-day scenic tea country & beach tour, or a full 14-day island round trip, I make sure you travel stress-free at your own pace.
+                </p>
+
+                <div class="grid grid-cols-2 gap-4 pt-2">
+                    <div class="flex items-center gap-3">
+                        <i class="fa-solid fa-circle-check text-primary text-lg"></i>
+                        <span class="font-semibold text-slate-800 text-sm">Comfortable Modern Sedan / Van</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <i class="fa-solid fa-circle-check text-primary text-lg"></i>
+                        <span class="font-semibold text-slate-800 text-sm">Fuel & Highway Tolls Included</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <i class="fa-solid fa-circle-check text-primary text-lg"></i>
+                        <span class="font-semibold text-slate-800 text-sm">Hotel Recommendation & Booking</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <i class="fa-solid fa-circle-check text-primary text-lg"></i>
+                        <span class="font-semibold text-slate-800 text-sm">Hidden Gem Local Spots</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="destinations" class="py-20 bg-slate-100/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-14" data-aos="fade-up">
+                <span class="text-primary font-bold tracking-wider text-xs uppercase px-3 py-1 bg-teal-100/70 rounded-full">Explore Island Wonders</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3">Most Popular Destinations We Visit</h2>
+                <p class="text-slate-600 mt-2">From UNESCO world heritage sites to serene hill capitals and pristine beaches.</p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Sigiriya -->
+                <div data-aos="fade-up" data-aos-delay="100" class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 group border border-slate-200">
+                    <div class="relative h-52 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1580674684081-7617fbf3d745?q=80&w=800&auto=format&fit=crop" alt="Sigiriya Rock Fortress Sri Lanka" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <span class="absolute top-3 left-3 bg-slate-900/80 text-amber-300 text-xs font-semibold px-3 py-1 rounded-full backdrop-blur-sm">Cultural Triangle</span>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-bold text-lg text-slate-900 group-hover:text-primary transition-colors">Sigiriya & Dambulla</h3>
+                        <p class="text-slate-600 text-xs mt-2 leading-relaxed">Ancient Lion Rock fortress, Golden Rock Cave Temples, and Minniriya wild elephant safari.</p>
+                    </div>
+                </div>
+
+                <!-- Ella -->
+                <div data-aos="fade-up" data-aos-delay="200" class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 group border border-slate-200">
+                    <div class="relative h-52 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1588598056926-2b969ed28682?q=80&w=800&auto=format&fit=crop" alt="Nine Arch Bridge Ella Sri Lanka" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <span class="absolute top-3 left-3 bg-slate-900/80 text-amber-300 text-xs font-semibold px-3 py-1 rounded-full backdrop-blur-sm">Hill Country</span>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-bold text-lg text-slate-900 group-hover:text-primary transition-colors">Ella & Nuwara Eliya</h3>
+                        <p class="text-slate-600 text-xs mt-2 leading-relaxed">Nine Arch Bridge, scenic mountain train trips, lush tea plantations, and cascading waterfalls.</p>
+                    </div>
+                </div>
+
+                <!-- Yala Safari -->
+                <div data-aos="fade-up" data-aos-delay="300" class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 group border border-slate-200">
+                    <div class="relative h-52 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?q=80&w=800&auto=format&fit=crop" alt="Yala National Park Safari Sri Lanka" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <span class="absolute top-3 left-3 bg-slate-900/80 text-amber-300 text-xs font-semibold px-3 py-1 rounded-full backdrop-blur-sm">Wildlife Safari</span>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-bold text-lg text-slate-900 group-hover:text-primary transition-colors">Yala & Udawalawe</h3>
+                        <p class="text-slate-600 text-xs mt-2 leading-relaxed">Exciting 4x4 open-jeep safaris to spot leopards, wild elephants, sloth bears & exotic birds.</p>
+                    </div>
+                </div>
+
+                <!-- Mirissa & Galle -->
+                <div data-aos="fade-up" data-aos-delay="400" class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 group border border-slate-200">
+                    <div class="relative h-52 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?q=80&w=800&auto=format&fit=crop" alt="Galle Fort and Mirissa Beach Sri Lanka" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <span class="absolute top-3 left-3 bg-slate-900/80 text-amber-300 text-xs font-semibold px-3 py-1 rounded-full backdrop-blur-sm">South Coast</span>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-bold text-lg text-slate-900 group-hover:text-primary transition-colors">Mirissa & Galle Fort</h3>
+                        <p class="text-slate-600 text-xs mt-2 leading-relaxed">Dutch Colonial Galle Fort, Coconut Tree Hill, whale watching, and beach relaxation.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="tours" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-14" data-aos="fade-up">
+                <span class="text-primary font-bold tracking-wider text-xs uppercase px-3 py-1 bg-teal-50 rounded-full border border-teal-200">Customized Tour Plans</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3">Tailored Short & Multi-Day Tours</h2>
+                <p class="text-slate-600 mt-2">Pick an existing itinerary or let me customize every stop according to your needs!</p>
+            </div>
+
+            <div class="grid lg:grid-cols-3 gap-8 items-stretch">
+                <!-- Package 1: Short Getaway -->
+                <div data-aos="fade-up" data-aos-delay="100" class="bg-slate-50 border border-slate-200 rounded-3xl p-6 sm:p-8 flex flex-col justify-between hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 relative">
+                    <span class="absolute top-6 right-6 text-xs font-extrabold bg-teal-100 text-primary px-3 py-1 rounded-full">3 - 5 Days</span>
+                    <div>
+                        <h3 class="text-2xl font-bold text-slate-900 mb-2">Short Highlights Tour</h3>
+                        <p class="text-slate-500 text-xs mb-6">Perfect for quick holidays & weekend trips.</p>
+                        <ul class="space-y-3 text-sm text-slate-700 mb-8">
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-primary"></i> CMB Airport Pickup & Dropoff</li>
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-primary"></i> Sigiriya Rock Fortress & Dambulla</li>
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-primary"></i> Kandy Temple of the Tooth</li>
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-primary"></i> Tea Plantation & Spice Garden</li>
+                        </ul>
+                    </div>
+                    <a href="https://wa.me/94770000000?text=Hi!%20I%20am%20interested%20in%20the%203-5%20Day%20Short%20Highlights%20Tour." target="_blank" rel="noopener noreferrer" class="w-full text-center bg-slate-900 hover:bg-slate-800 text-white font-bold py-3.5 rounded-xl transition-all hover:scale-[1.02]">
+                        Inquire This Plan
+                    </a>
+                </div>
+
+                <!-- Package 2: Classic Island Round (Featured) -->
+                <div data-aos="fade-up" data-aos-delay="200" class="bg-gradient-to-b from-slate-900 via-teal-950 to-slate-900 text-white rounded-3xl p-6 sm:p-8 flex flex-col justify-between shadow-2xl relative border-2 border-amber-400/80 scale-105 z-10 hover:scale-[1.07] transition-all duration-300">
+                    <span class="absolute -top-3 right-8 text-xs font-extrabold bg-amber-400 text-slate-950 px-4 py-1 rounded-full shadow badge-glow">Most Popular</span>
+                    <div>
+                        <span class="text-amber-400 text-xs font-extrabold uppercase tracking-widest">Recommended</span>
+                        <h3 class="text-2xl font-bold text-white mt-1 mb-2">7 - 9 Days Island Explorer</h3>
+                        <p class="text-slate-300 text-xs mb-6">Experience the perfect mix of heritage, hills & beaches.</p>
+                        <ul class="space-y-3 text-sm text-slate-200 mb-8">
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-amber-400"></i> Sigiriya & Elephant Safari</li>
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-amber-400"></i> Kandy Royal Botanical Gardens</li>
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-amber-400"></i> Nuwara Eliya & Scenic Ella Train</li>
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-amber-400"></i> Yala Wildlife Safari</li>
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-amber-400"></i> Mirissa / Galle Coastline</li>
+                        </ul>
+                    </div>
+                    <a href="https://wa.me/94770000000?text=Hi!%20I%20am%20interested%20in%20the%207-9%20Day%20Island%20Explorer%20Tour." target="_blank" rel="noopener noreferrer" class="shimmer-btn w-full text-center bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold py-3.5 rounded-xl shadow-lg transition-all hover:scale-[1.02]">
+                        Inquire This Plan
+                    </a>
+                </div>
+
+                <!-- Package 3: Grand Island Round -->
+                <div data-aos="fade-up" data-aos-delay="300" class="bg-slate-50 border border-slate-200 rounded-3xl p-6 sm:p-8 flex flex-col justify-between hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 relative">
+                    <span class="absolute top-6 right-6 text-xs font-extrabold bg-teal-100 text-primary px-3 py-1 rounded-full">10 - 14+ Days</span>
+                    <div>
+                        <h3 class="text-2xl font-bold text-slate-900 mb-2">Complete Round Tour</h3>
+                        <p class="text-slate-500 text-xs mb-6">Full island immersion without missing anything.</p>
+                        <ul class="space-y-3 text-sm text-slate-700 mb-8">
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-primary"></i> Anuradhapura & Polonnaruwa Ancient Cities</li>
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-primary"></i> Trincomalee / East Coast Beaches</li>
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-primary"></i> Sigiriya, Kandy, Nuwara Eliya & Ella</li>
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-primary"></i> Safari + Southern Coast Resorts</li>
+                        </ul>
+                    </div>
+                    <a href="https://wa.me/94770000000?text=Hi!%20I%20am%20interested%20in%20the%2010-14%20Day%20Complete%20Round%20Tour." target="_blank" rel="noopener noreferrer" class="w-full text-center bg-slate-900 hover:bg-slate-800 text-white font-bold py-3.5 rounded-xl transition-all hover:scale-[1.02]">
+                        Inquire This Plan
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="hotels" class="py-20 bg-slate-900 text-white relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6" data-aos="fade-right">
+                    <span class="text-amber-400 font-extrabold tracking-wider text-xs uppercase px-3 py-1 bg-amber-400/10 rounded-full border border-amber-400/20">Hassle-Free Accommodation</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold leading-tight">
+                        Need Help Booking Hotels? <br/>I Have You Covered!
+                    </h2>
+                    <p class="text-slate-300 leading-relaxed">
+                        Booking accommodation in unfamiliar places can be confusing. If you haven't booked your stay yet, don't worry! I work with verified, guest-friendly hotels, boutique villas, and cozy guesthouses all over Sri Lanka.
+                    </p>
+
+                    <div class="space-y-4 pt-2">
+                        <div class="flex items-start gap-4 bg-slate-800/80 p-4 rounded-2xl border border-slate-700 hover:border-amber-400/50 transition-colors">
+                            <i class="fa-solid fa-bed text-amber-400 text-2xl mt-1"></i>
+                            <div>
+                                <h4 class="font-bold text-white text-base">Budget & Comfortable Homestays</h4>
+                                <p class="text-xs text-slate-400">Clean, welcoming local guesthouses with AC, hot water, and delicious local breakfasts ($30 - $50 / night).</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4 bg-slate-800/80 p-4 rounded-2xl border border-slate-700 hover:border-teal-400/50 transition-colors">
+                            <i class="fa-solid fa-hotel text-teal-400 text-2xl mt-1"></i>
+                            <div>
+                                <h4 class="font-bold text-white text-base">4-Star & Luxury Boutique Hotels</h4>
+                                <p class="text-xs text-slate-400">Scenic views, swimming pools, luxury amenities, and top-tier hospitality ($80 - $200+ / night).</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative" data-aos="fade-left">
+                    <div class="glass-card p-8 rounded-3xl text-slate-900 shadow-2xl border border-white hover:shadow-teal-500/10 transition-shadow">
+                        <h3 class="text-2xl font-extrabold mb-4 text-slate-900">Hotel Preference Choice</h3>
+                        <p class="text-slate-600 text-sm mb-6">When contacting me, simply let me know your accommodation choice:</p>
+
+                        <div class="space-y-3 text-sm font-semibold">
+                            <div class="p-4 rounded-xl border border-slate-200 bg-white flex items-center justify-between hover:scale-[1.02] transition-transform">
+                                <span><i class="fa-solid fa-check-circle text-primary mr-2"></i> Standard / Budget Hotels</span>
+                                <span class="text-xs bg-slate-100 px-2.5 py-1 rounded-md text-slate-600">$</span>
+                            </div>
+                            <div class="p-4 rounded-xl border border-slate-200 bg-white flex items-center justify-between hover:scale-[1.02] transition-transform">
+                                <span><i class="fa-solid fa-check-circle text-primary mr-2"></i> Comfort / 3-4 Star Hotels</span>
+                                <span class="text-xs bg-slate-100 px-2.5 py-1 rounded-md text-slate-600">$$</span>
+                            </div>
+                            <div class="p-4 rounded-xl border border-slate-200 bg-white flex items-center justify-between hover:scale-[1.02] transition-transform">
+                                <span><i class="fa-solid fa-check-circle text-primary mr-2"></i> Luxury Villas & 5-Star Resorts</span>
+                                <span class="text-xs bg-slate-100 px-2.5 py-1 rounded-md text-slate-600">$$$</span>
+                            </div>
+                            <div class="p-4 rounded-xl border border-slate-200 bg-teal-50 text-teal-900 flex items-center justify-between hover:scale-[1.02] transition-transform">
+                                <span><i class="fa-solid fa-user-check text-primary mr-2"></i> "I will book my own hotels"</span>
+                                <span class="text-xs bg-teal-100 px-2.5 py-1 rounded-md text-primary font-bold">Driver Only</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="calculator" class="py-20 bg-slate-100/70">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12" data-aos="zoom-in">
+                <span class="text-primary font-bold tracking-wider text-xs uppercase px-3 py-1 bg-teal-100/80 rounded-full">Transparent Pricing</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3">Instant Tour Cost Estimator</h2>
+                <p class="text-slate-600 mt-2">Get an immediate estimate including private car, dedicated driver-guide, fuel, highway tolls & parking fees.</p>
+            </div>
+
+            <div data-aos="fade-up" class="bg-white p-6 sm:p-10 rounded-3xl border border-slate-200 shadow-xl">
+                <form id="calc-form" class="space-y-6">
+                    <div class="grid sm:grid-cols-2 gap-6">
+                        <div>
+                            <label for="calc-days" class="block text-sm font-semibold text-slate-700 mb-2">Tour Duration (Days)</label>
+                            <input type="number" id="calc-days" min="1" max="30" value="5" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-primary focus:outline-none font-semibold text-slate-900 transition-all">
+                        </div>
+                        <div>
+                            <label for="calc-passengers" class="block text-sm font-semibold text-slate-700 mb-2">Vehicle Choice & Passengers</label>
+                            <select id="calc-passengers" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-primary focus:outline-none font-semibold text-slate-900 bg-white transition-all">
+                                <option value="sedan">1 - 3 Passengers (Comfort Sedan)</option>
+                                <option value="van">4 - 8 Passengers (Spacious Mini Van)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="space-y-3">
+                        <label class="block text-sm font-semibold text-slate-700">Optional Service Options</label>
+                        <div class="grid sm:grid-cols-2 gap-4">
+                            <label class="flex items-center gap-3 bg-slate-50 p-4 rounded-xl border border-slate-200 cursor-pointer hover:border-primary transition-colors">
+                                <input type="checkbox" id="add-hotel" class="w-5 h-5 text-primary rounded focus:ring-primary accent-primary">
+                                <span class="text-sm font-medium text-slate-800">Include Hotel Stay Estimation</span>
+                            </label>
+                            <label class="flex items-center gap-3 bg-slate-50 p-4 rounded-xl border border-slate-200 cursor-pointer hover:border-primary transition-colors">
+                                <input type="checkbox" id="add-airport" checked class="w-5 h-5 text-primary rounded focus:ring-primary accent-primary">
+                                <span class="text-sm font-medium text-slate-800">Include Airport Transfer</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Calculated Output Display -->
+                    <div class="bg-gradient-to-r from-slate-900 via-teal-950 to-slate-900 text-white p-6 sm:p-8 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-6 mt-8 shadow-lg">
+                        <div>
+                            <span class="text-teal-300 text-xs font-extrabold uppercase tracking-widest block">Estimated Total Price Range</span>
+                            <span id="estimated-price" class="text-3xl sm:text-4xl font-extrabold text-amber-400 mt-1 block transition-all">$350 - $420 USD</span>
+                            <p class="text-xs text-slate-300 mt-1">*Includes car, driver allowance, fuel, highway tolls & taxes.</p>
+                        </div>
+                        <button type="button" id="book-calc-btn" class="shimmer-btn w-full sm:w-auto bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold px-8 py-4 rounded-xl shadow-md transition-all hover:scale-105 active:scale-95 flex items-center justify-center gap-2">
+                            Inquire This Rate <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-20 bg-slate-900 text-white relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12">
+                
+                <div class="space-y-6" data-aos="fade-right">
+                    <span class="text-amber-400 font-extrabold tracking-wider text-xs uppercase px-3 py-1 bg-amber-400/10 rounded-full border border-amber-400/20">Let's Plan Your Journey</span>
+                    <h2 class="text-3xl sm:text-5xl font-extrabold leading-tight">Ready to Experience Sri Lanka?</h2>
+                    <p class="text-slate-300 leading-relaxed">
+                        Send me your travel dates, requested destinations, or general questions. I respond immediately with a customized itinerary and affordable quote!
+                    </p>
+
+                    <div class="space-y-4 pt-4">
+                        <a href="https://wa.me/94770000000" target="_blank" rel="noopener noreferrer" class="flex items-center gap-4 bg-slate-800/80 p-4 rounded-2xl border border-slate-700 hover:border-emerald-500 transition-all hover:translate-x-2 group">
+                            <div class="w-12 h-12 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-2xl font-bold group-hover:scale-110 transition-transform">
+                                <i class="fa-brands fa-whatsapp"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-slate-400">WhatsApp (Fastest Response)</p>
+                                <p class="text-base font-bold text-white">+94 77 000 0000</p>
+                            </div>
+                        </a>
+
+                        <div class="flex items-center gap-4 bg-slate-800/80 p-4 rounded-2xl border border-slate-700">
+                            <div class="w-12 h-12 rounded-xl bg-primary/20 text-primary flex items-center justify-center text-xl font-bold">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-slate-400">Direct Email</p>
+                                <p class="text-base font-bold text-white">info@lankavibetravels.com</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-4 bg-slate-800/80 p-4 rounded-2xl border border-slate-700">
+                            <div class="w-12 h-12 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center text-xl font-bold">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-slate-400">Location Base</p>
+                                <p class="text-base font-bold text-white">Colombo / Airport Pickups Islandwide</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Interactive Booking Form -->
+                <div data-aos="fade-left" class="bg-slate-800/90 p-8 rounded-3xl border border-slate-700 shadow-2xl backdrop-blur-md">
+                    <h3 class="text-2xl font-bold mb-6 text-white">Send Tour Request</h3>
+                    <form id="contact-form" class="space-y-4">
+                        <div>
+                            <label for="contact-name" class="block text-xs text-slate-300 font-semibold mb-1">Your Full Name</label>
+                            <input type="text" id="contact-name" required placeholder="John Smith" class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-white focus:outline-none focus:border-primary transition-colors">
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label for="contact-arrival" class="block text-xs text-slate-300 font-semibold mb-1">Arrival Date</label>
+                                <input type="date" id="contact-arrival" required class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-white focus:outline-none focus:border-primary transition-colors">
+                            </div>
+                            <div>
+                                <label for="contact-days-count" class="block text-xs text-slate-300 font-semibold mb-1">Tour Days</label>
+                                <input type="number" id="contact-days-count" min="1" max="30" placeholder="e.g. 7" required class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-white focus:outline-none focus:border-primary transition-colors">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="contact-hotel-pref" class="block text-xs text-slate-300 font-semibold mb-1">Hotel Booking Support Needed?</label>
+                            <select id="contact-hotel-pref" class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-white focus:outline-none focus:border-primary transition-colors">
+                                <option value="no">No, I will book my own hotels</option>
+                                <option value="budget">Yes, Budget Guesthouses / Homestays</option>
+                                <option value="comfort">Yes, 3-4 Star Comfort Hotels</option>
+                                <option value="luxury">Yes, Luxury Boutique Hotels</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label for="contact-notes" class="block text-xs text-slate-300 font-semibold mb-1">Special Preferences / Preferred Destinations</label>
+                            <textarea id="contact-notes" rows="3" placeholder="Sigiriya, Kandy, Nuwara Eliya, Yala Safari, Mirissa..." class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-white focus:outline-none focus:border-primary transition-colors"></textarea>
+                        </div>
+
+                        <button type="submit" class="shimmer-btn w-full bg-primary hover:bg-primaryDark text-white font-bold py-4 rounded-xl shadow-lg shadow-primary/30 transition-all hover:scale-[1.02] active:scale-95">
+                            Submit Inquiry
+                        </button>
+                    </form>
+
+                    <div id="form-msg" class="hidden mt-4 p-4 rounded-xl bg-emerald-500/20 border border-emerald-500 text-emerald-300 text-sm text-center animate-bounce">
+                        <i class="fa-solid fa-circle-check mr-2"></i> Thank you! Your request was received. I will reply to you on WhatsApp / Email shortly!
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <a href="https://wa.me/94770000000?text=Hi!%20I%20am%20interested%20in%20a%20private%20tour%20in%20Sri%20Lanka." target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp" class="fixed bottom-6 right-6 z-50 bg-emerald-500 hover:bg-emerald-600 text-white w-14 h-14 rounded-full flex items-center justify-center text-3xl shadow-2xl transition-all hover:scale-110 active:scale-90 badge-glow">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 text-slate-400 py-8 border-t border-slate-800 text-center text-xs sm:text-sm">
+        <div class="max-w-7xl mx-auto px-4">
+            <p>© 2026 Lanka Vibe Travels & Chauffeur Tours. All Rights Reserved. Private Tour Guide Sri Lanka.</p>
+        </div>
+    </footer>
+
+    <!-- AOS (Animate On Scroll) JS Library -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS animations
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true,
+            offset: 80,
+        });
+
+        // Mobile Navigation Toggle
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when clicking menu links
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Dynamic Cost Calculator Logic
+        const daysInput = document.getElementById('calc-days');
+        const vehicleSelect = document.getElementById('calc-passengers');
+        const hotelChk = document.getElementById('add-hotel');
+        const priceDisplay = document.getElementById('estimated-price');
+
+        function calculatePrice() {
+            const days = parseInt(daysInput.value) || 1;
+            const vehicleType = vehicleSelect.value;
+            
+            // Base rates per day in USD (car + driver + fuel + tolls)
+            let dailyBase = (vehicleType === 'van') ? 95 : 70;
+            
+            let totalMin = days * dailyBase;
+            let totalMax = days * (dailyBase + 20);
+
+            if (hotelChk.checked) {
+                totalMin += days * 45; // Approx budget stay rate
+                totalMax += days * 110; // Boutique stay rate
+            }
+
+            priceDisplay.textContent = `$${totalMin} - $${totalMax} USD`;
+        }
+
+        daysInput.addEventListener('input', calculatePrice);
+        vehicleSelect.addEventListener('change', calculatePrice);
+        hotelChk.addEventListener('change', calculatePrice);
+
+        // Redirect Calculator Booking button to WhatsApp with pre-filled message
+        document.getElementById('book-calc-btn').addEventListener('click', () => {
+            const days = daysInput.value;
+            const vehicle = vehicleSelect.options[vehicleSelect.selectedIndex].text;
+            const text = encodeURIComponent(`Hi! I generated an estimate for a ${days}-day tour (${vehicle}) on your website. Can we discuss the itinerary?`);
+            window.open(`https://wa.me/94770000000?text=${text}`, '_blank');
+        });
+
+        // Contact Form Submission Handler
+        document.getElementById('contact-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const msgBox = document.getElementById('form-msg');
+            msgBox.classList.remove('hidden');
+            e.target.reset();
+        });
+    </script>
+</body>
+</html>
